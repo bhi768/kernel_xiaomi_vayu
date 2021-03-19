@@ -4,16 +4,12 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Etherious Kernel by SonalSingh18
+kernel.string=Candy Kernel
 do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=miatoll
-device.name2=curtana
-device.name3=excalibur
-device.name4=gram
-device.name5=joyeuse
+device.name=vayu
 supported.versions=11.0
 '; } # end properties
 
@@ -45,4 +41,3 @@ fi;
 
 write_boot;
 ## end install
-
