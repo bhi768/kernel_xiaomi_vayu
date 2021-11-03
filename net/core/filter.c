@@ -3183,9 +3183,7 @@ BPF_CALL_1(bpf_get_comm_hash_from_sk, struct sk_buff *, skb)
 	struct task_struct *p_task = NULL;
 	struct sock *sk = sk_to_full_sk(skb->sk);
 	u64 hash = -1;
-	pid_t pid = sk->pid_num;
 	rcu_read_lock();
-	p_task = find_task_by_pid_ns(pid, &init_pid_ns);
 	if (p_task) {
 		get_task_struct(p_task);
 		hash = hash_string(p_task->comm);
