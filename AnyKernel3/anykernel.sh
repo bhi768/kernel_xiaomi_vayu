@@ -10,7 +10,7 @@ do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
 device.name=vayu
-supported.versions=11.0
+supported.versions=
 '; } # end properties
 
 # shell variables
