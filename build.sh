@@ -5,15 +5,15 @@
 ## Copy this script inside the kernel directory
 KERNEL_DEFCONFIG=vayu_user_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
-FINAL_KERNEL_ZIP=Candy-Vayu-$(date '+%Y%m%d').zip
-export PATH="$HOME/proton/bin:$PATH"
+FINAL_KERNEL_ZIP=Xtended-Vayu-$(date '+%Y%m%d').zip
+export PATH="$HOME/azure-clang/bin:$PATH"
 export ARCH=arm64
 export SUBARCH=arm64
-export KBUILD_COMPILER_STRING="$($HOME/proton/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
+export KBUILD_COMPILER_STRING="$($HOME/azure-clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
 
-if ! [ -d "$HOME/proton" ]; then
-echo "Proton clang not found! Cloning..."
-if ! git clone -q https://github.com/kdrag0n/proton-clang --depth=1 --single-branch ~/proton; then
+if ! [ -d "$HOME/azure-clang" ]; then
+echo "azure clang not found! Cloning..."
+if ! git clone -q https://gitlab.com/Panchajanya1999/azure-clang --depth=1 --single-branch ~/azure-clang; then
 echo "Cloning failed! Aborting..."
 exit 1
 fi
