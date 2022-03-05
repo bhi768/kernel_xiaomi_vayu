@@ -5,11 +5,11 @@
 ## Copy this script inside the kernel directory
 KERNEL_DEFCONFIG=vayu_user_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
-FINAL_KERNEL_ZIP=SkyLine-Vayu-$(date '+%Y%m%d').zip
-export PATH="$HOME/Clang-15.0.0-20220304/bin:$PATH"
+FINAL_KERNEL_ZIP=Candy-Vayu-$(date '+%Y%m%d').zip
+export PATH="$HOME/Clang-15.0.0-20220212/bin:$PATH"
 export ARCH=arm64
 export SUBARCH=arm64
-export KBUILD_COMPILER_STRING="$($HOME/Clang-15.0.0-20220304/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
+export KBUILD_COMPILER_STRING="$($HOME/Clang-15.0.0-20220212/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
 
 #if ! [ -d "$HOME/Clang-15.0.0-20220212" ]; then
 #echo "Proton clang not found! Cloning..."
