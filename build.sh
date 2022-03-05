@@ -5,7 +5,7 @@
 ## Copy this script inside the kernel directory
 KERNEL_DEFCONFIG=vayu_user_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
-FINAL_KERNEL_ZIP=Candy-Vayu-$(date '+%Y%m%d').zip
+FINAL_KERNEL_ZIP=SkyLine-Vayu-$(date '+%Y%m%d').zip
 export PATH="$HOME/Clang-15.0.0-20220212/bin:$PATH"
 export ARCH=arm64
 export SUBARCH=arm64
