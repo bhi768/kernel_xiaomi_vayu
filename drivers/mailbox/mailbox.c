@@ -72,7 +72,7 @@ static int __msg_submit(struct mbox_chan *chan)
 	else
 		idx += MBOX_TX_QUEUE_LEN - count;
 
-	data = chan->msg_data[idx];
+    	data = chan->msg_data[idx];
 
 	if (chan->cl->tx_prepare)
 		chan->cl->tx_prepare(chan->cl, data);
@@ -84,6 +84,25 @@ static int __msg_submit(struct mbox_chan *chan)
 	}
 exit:
 	spin_unlock_irqrestore(&chan->lock, flags);
+
+	return err;
+}
+
+static void msg_submit(struct mbox_chan *chan)
+{
+	unsigned long flags;
+	int err = 0;
+
+/*
+	 * If the controller returns -EAGAIN, then it means, our spinlock
+	 * here is preventing the controller from receiving its interrupt,
+	 * that would help clear the controller channels that are currently
+	 * blocked waiting on the interrupt response.
+	 * Retry again.
+	 */
+	do {
+		err = __msg_submit(chan);
+	} while (err == -EAGAIN);
 
 	if (!err && (chan->txdone_method & TXDONE_BY_POLL)) {
 		/* kick start the timer immediately to avoid delays */
@@ -104,7 +123,7 @@ static void tx_tick(struct mbox_chan *chan, int r)
 	spin_unlock_irqrestore(&chan->lock, flags);
 
 	/* Submit next message */
-	msg_submit(chan);
+ 	msg_submit(chan);
 
 	if (!mssg)
 		return;
